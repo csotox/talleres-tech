@@ -1,6 +1,16 @@
 const express = require('express');
 const app = express();
 
-app.listen(3000, () => {
-    console.log('Server on port 3000');
+// Settings
+app.set('port', process.env.PORT || 3000);
+
+// Middlewares
+
+// Routes
+
+// Static file
+app.use(express.static(__dirname + '/public'));
+
+app.listen(app.get('port'), () => {
+    console.log('Server on port ', app.get('port'));
 });

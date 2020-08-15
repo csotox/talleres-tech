@@ -1,6 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
+
 const app = express();
+
+// Utilizo docker con el puerto 27017
+// Mongo v4.4
+mongoose.connect('mongodb://localhost:27017/menv-fazt')
+    .then(db => console.log('DB is connected'))
+    .catch(error => console.error(error));
 
 // Settings
 app.set('port', process.env.PORT || 3000);

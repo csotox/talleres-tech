@@ -17,6 +17,13 @@ router.post('/', (req, res) => {
     taskNew.save()
         .then(response => res.json({ status: 201 }))
         .catch(error => res.json({ status: 422, error: error }));
-})
+});
+
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    Task.findByIdAndUpdate(id, req.body)
+        .then(response => res.json({ status: 200 }))
+        .catch(error => res.json({ status: 422, error: error }));
+});
 
 module.exports = router;

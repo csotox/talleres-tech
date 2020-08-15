@@ -42,7 +42,12 @@
                                 <tr v-for="item of tasks">
                                     <td scope="row">{{ item.title }}</td>
                                     <td>{{ item.description }}</td>
-                                    <td></td>
+                                    <td>
+                                        <button @click="delTask(item)"
+                                            class="btn btn-danger">
+                                            Eliminar
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                     </table>
@@ -104,6 +109,20 @@ export default {
             })
             .catch(error => console.log('getTask', error));
         },
+        delTask(task) {
+            fetch('/api/tasks/' + task._id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'COntent-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                this.getTask();
+            })
+            .catch(error => console.log('delTask', error));
+        }
     },
 }
 </script>

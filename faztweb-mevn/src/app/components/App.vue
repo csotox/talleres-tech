@@ -47,9 +47,21 @@ export default {
     }),
     methods: {
         addTask() {
-            alert('addTask');
-            this.task.title = '';
-            this.task.description = '';
+            fetch('/api/tasks', {
+                method: 'POST',
+                body: JSON.stringify(this.task),
+                headers: {
+                    'Accept': 'application/json',
+                    'COntent-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                this.task.title = '';
+                this.task.description = '';
+            })
+            .catch(error => console.log(error));
         },
     },
 }

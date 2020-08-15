@@ -10,7 +10,7 @@
                 <div class="col-5">
                     <div class="card">
                         <div class="card-body">
-                            <form @submit.prevent="addTask">
+                            <form @submit.prevent="sendTask">
                                 <div class="form-group">
                                     <input v-model="task.title"
                                         type="text"
@@ -23,7 +23,12 @@
                                          placeholder="Insertar descripción"
                                          class="form-control"></textarea>
                                 </div>
-                                <button class="btn btn-primary btn-block">Agregar</button>
+                                <template v-if="!isEdit">
+                                    <button class="btn btn-primary btn-block">Agregar</button>
+                                </template>
+                                <template v-else>
+                                    <button class="btn btn-primary btn-block">Actualizar</button>
+                                </template>
                             </form>
                         </div>
                     </div>
@@ -46,6 +51,10 @@
                                         <button @click="delTask(item)"
                                             class="btn btn-danger">
                                             Eliminar
+                                        </button>
+                                        <button @click="editTask(item)"
+                                            class="btn btn-secondary">
+                                            Editar
                                         </button>
                                     </td>
                                 </tr>
@@ -76,28 +85,50 @@ export default {
             title: '',
             description: '',
         },
-        tasks: []
+        tasks: [],
+        isEdit: false,
+        editId: ''
     }),
     created() {
         this.getTask();
     },
     methods: {
-        addTask() {
-            fetch('/api/tasks', {
-                method: 'POST',
-                body: JSON.stringify(this.task),
-                headers: {
-                    'Accept': 'application/json',
-                    'COntent-type': 'application/json'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                this.task.title = '';
-                this.task.description = '';
-                this.getTask();
-            })
-            .catch(error => console.log(error));
+        sendTask() {
+            if (!this.isEdit) {
+                fetch('/api/tasks', {
+                    method: 'POST',
+                    body: JSON.stringify(this.task),
+                    headers: {
+                        'Accept': 'application/json',
+                        'COntent-type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    this.task.title = '';
+                    this.task.description = '';
+                    this.getTask();
+                })
+                .catch(error => console.log(error));
+            } else {
+                fetch('/api/tasks/' + this.editId, {
+                    method: 'PUT',
+                    body: JSON.stringify(this.task),
+                    headers: {
+                        'Accept': 'application/json',
+                        'COntent-type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    this.isEdit = false;
+                    this.editId = '';
+                    this.task.title = '';
+                    this.task.description = '';
+                    this.getTask();
+                })
+                .catch(error => console.log(error));
+            }
         },
         getTask() {
             fetch('/api/tasks', {
@@ -122,7 +153,20 @@ export default {
                 this.getTask();
             })
             .catch(error => console.log('delTask', error));
-        }
+        },
+        editTask(task) {
+            fetch('/api/tasks/' + task._id, {
+                method: 'GET',
+            })
+            .then(res => res.json())
+            .then(data => {
+                this.isEdit = true;
+                this.editId = data._id;
+                this.task.title = data.title;
+                this.task.description = data.description;
+            })
+            .catch(error => console.log('getTask', error));
+        },
     },
 }
 </script>

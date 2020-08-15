@@ -12,6 +12,13 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    Task.findById(id)
+        .then(response => res.json(response))
+        .catch(error => res.json({ status: 422, error: error }));
+});
+
 router.post('/', (req, res) => {
     const taskNew = new Task(req.body);
     taskNew.save()

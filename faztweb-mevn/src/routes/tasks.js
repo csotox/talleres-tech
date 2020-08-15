@@ -26,4 +26,11 @@ router.put('/:id', (req, res) => {
         .catch(error => res.json({ status: 422, error: error }));
 });
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Task.findByIdAndDelete(id, req.body)
+        .then(response => res.json({ status: 200 }))
+        .catch(error => res.json({ status: 422, error: error }));
+});
+
 module.exports = router;

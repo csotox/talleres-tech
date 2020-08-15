@@ -6,6 +6,7 @@
 
         <div class="container">
             <div class="row pt-5">
+                <!-- Form -->
                 <div class="col-5">
                     <div class="card">
                         <div class="card-body">
@@ -27,9 +28,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5">
+                <!-- Table -->
+                <div class="col-7">
+                    <table class="table table-striped table-inverse table-responsive">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Tarea</th>
+                                <th>Descripción</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item of tasks">
+                                    <td scope="row">{{ item.title }}</td>
+                                    <td>{{ item.description }}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row pt-5">
+                <div class="col-6">
                     <pre>
                         {{ task }}
+                    </pre>
+                </div>
+                <div class="col-6">
+                    <pre>
+                        {{ tasks }}
                     </pre>
                 </div>
             </div>
@@ -43,8 +70,12 @@ export default {
         task: {
             title: '',
             description: '',
-        }
+        },
+        tasks: []
     }),
+    created() {
+        this.getTask();
+    },
     methods: {
         addTask() {
             fetch('/api/tasks', {
@@ -57,11 +88,21 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 this.task.title = '';
                 this.task.description = '';
+                this.getTask();
             })
             .catch(error => console.log(error));
+        },
+        getTask() {
+            fetch('/api/tasks', {
+                method: 'GET',
+            })
+            .then(res => res.json())
+            .then(data => {
+                this.tasks = data;
+            })
+            .catch(error => console.log('getTask', error));
         },
     },
 }

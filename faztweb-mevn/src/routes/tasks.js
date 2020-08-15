@@ -12,4 +12,11 @@ router.get('/', (req, res) => {
         });
 });
 
+router.post('/', (req, res) => {
+    const taskNew = new Task(req.body);
+    taskNew.save()
+        .then(response => res.json({ status: 201 }))
+        .catch(error => res.json({ status: 422, error: error }));
+})
+
 module.exports = router;

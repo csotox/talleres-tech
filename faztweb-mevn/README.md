@@ -46,6 +46,10 @@ npm install vue-loader -D
 npm install vue-template-compiler -D
 ~~~~
 
+~~~~ batch
+npm install vue -D
+~~~~
+
 ## Enlaces de interes
 
 [Youtube - Parte # 1](https://www.youtube.com/watch?v=ARIzrNwA5HQ)

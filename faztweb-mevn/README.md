@@ -48,6 +48,8 @@ npm install vue-template-compiler -D
 
 ## Enlaces de interes
 
-[Youtube - Parte # 1](https://www.youtube.com/watch?v=ARIzrNwA5HQ&t=471s)
+[Youtube - Parte # 1](https://www.youtube.com/watch?v=ARIzrNwA5HQ)
+  
+[Youtube - Parte # 2](https://www.youtube.com/watch?v=NQFaukftHpg)
   
 [Github](https://github.com/FaztWeb/mevn-crud-tasks)

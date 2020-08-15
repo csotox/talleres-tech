@@ -33,6 +33,11 @@ npm install morgan
 npm install mongose
 ~~~~
 
+~~~~ batch
+npm install webpack -D
+npm install webpack-cli -D
+~~~~
+
 ## Enlaces de interes
 
 [Youtube - Parte # 1](https://www.youtube.com/watch?v=ARIzrNwA5HQ&t=471s)

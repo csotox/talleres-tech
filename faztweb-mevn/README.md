@@ -38,6 +38,14 @@ npm install webpack -D
 npm install webpack-cli -D
 ~~~~
 
+~~~~ batch
+npm install @babel/core -D
+npm install @babel/preset-env -D
+npm install babel-loader -D
+npm install vue-loader -D
+npm install vue-template-compiler -D
+~~~~
+
 ## Enlaces de interes
 
 [Youtube - Parte # 1](https://www.youtube.com/watch?v=ARIzrNwA5HQ&t=471s)

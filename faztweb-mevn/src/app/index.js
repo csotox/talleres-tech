@@ -1,1 +1,1 @@
-alert('Aquí va Vuejs');
+alert('Aquí va Vuejs App tareas');

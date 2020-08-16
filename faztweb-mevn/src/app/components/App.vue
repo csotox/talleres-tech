@@ -42,36 +42,24 @@
                                 <th>Descripción</th>
                                 <th></th>
                             </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item of tasks">
-                                    <td scope="row">{{ item.title }}</td>
-                                    <td>{{ item.description }}</td>
-                                    <td>
-                                        <button @click="delTask(item)"
-                                            class="btn btn-danger">
-                                            Eliminar
-                                        </button>
-                                        <button @click="editTask(item)"
-                                            class="btn btn-secondary">
-                                            Editar
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item of tasks">
+                                <td scope="row">{{ item.title }}</td>
+                                <td>{{ item.description }}</td>
+                                <td>
+                                    <button @click="delTask(item)"
+                                        class="btn btn-danger">
+                                        Eliminar
+                                    </button>
+                                    <button @click="editTask(item)"
+                                        class="btn btn-secondary">
+                                        Editar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
-                </div>
-            </div>
-            <div class="row pt-5">
-                <div class="col-6">
-                    <pre>
-                        {{ task }}
-                    </pre>
-                </div>
-                <div class="col-6">
-                    <pre>
-                        {{ tasks }}
-                    </pre>
                 </div>
             </div>
         </div>
@@ -86,49 +74,38 @@ export default {
             description: '',
         },
         tasks: [],
-        isEdit: false,
         editId: ''
     }),
+    computed: {
+        isEdit() {
+            return this.editId !== '';
+        },
+    },
     created() {
         this.getTask();
     },
     methods: {
         sendTask() {
+            let verb = 'PUT';
+            let url = '/api/tasks/' + this.editId;
             if (!this.isEdit) {
-                fetch('/api/tasks', {
-                    method: 'POST',
-                    body: JSON.stringify(this.task),
-                    headers: {
-                        'Accept': 'application/json',
-                        'COntent-type': 'application/json'
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    this.task.title = '';
-                    this.task.description = '';
-                    this.getTask();
-                })
-                .catch(error => console.log(error));
-            } else {
-                fetch('/api/tasks/' + this.editId, {
-                    method: 'PUT',
-                    body: JSON.stringify(this.task),
-                    headers: {
-                        'Accept': 'application/json',
-                        'COntent-type': 'application/json'
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    this.isEdit = false;
-                    this.editId = '';
-                    this.task.title = '';
-                    this.task.description = '';
-                    this.getTask();
-                })
-                .catch(error => console.log(error));
+                verb = 'POST';
+                url = '/api/tasks';
             }
+
+            fetch(url, {
+                method: verb,
+                body: JSON.stringify(this.task),
+                headers: {
+                    'Accept': 'application/json',
+                    'COntent-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                this.clearAndGetTask();
+            })
+            .catch(error => console.log(error));
         },
         getTask() {
             fetch('/api/tasks', {
@@ -160,13 +137,21 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                this.isEdit = true;
                 this.editId = data._id;
                 this.task.title = data.title;
                 this.task.description = data.description;
             })
             .catch(error => console.log('getTask', error));
         },
+        clear() {
+            this.editId = '';
+            this.task.title = '';
+            this.task.description = '';
+        },
+        clearAndGetTask() {
+            this.clear();
+            this.getTask();
+        }
     },
 }
 </script>

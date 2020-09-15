@@ -17,7 +17,7 @@
     <script src="https://use.fontawesome.com/025d1f53df.js"></script>
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="img/logo.png" alt="fastfood">
+                    <img src="<?php bloginfo( 'template_url' ); ?>/img/logo.png" alt="fastfood">
                 </div>
 
                 <!-- Redes sociales -->
@@ -103,12 +103,12 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img src="img/slider.jpg" alt="First slide">
+                        <img src="<?php bloginfo( 'template_url' ); ?>/img/slider.jpg" alt="First slide">
 
                         <div class="carousel-caption">
 
                             <h2>menú fin de semana</h2>
-                            <img alt="menú 2x1" src="img/2x1.png">
+                            <img alt="menú 2x1" src="<?php bloginfo( 'template_url' ); ?>/img/2x1.png">
                             <p class="h4">en todas las hamburguesas</p>
                             <p>Consulta esta y todas nuestras otras promociones en nuestro apartado de carta.</p>
                             <a href="#" class="btn btn-secondary">Ver carta</a>
@@ -117,12 +117,12 @@
 
                     </div>
                     <div class="carousel-item">
-                        <img src="img/slider2.jpg" alt="First slide">
+                        <img src="<?php bloginfo( 'template_url' ); ?>/img/slider2.jpg" alt="First slide">
 
                         <div class="carousel-caption">
 
                             <h2>martes locos</h2>
-                            <img alt="menú 2x1" src="img/2x1.png">
+                            <img alt="menú 2x1" src="<?php bloginfo( 'template_url' ); ?>/img/2x1.png">
                             <p class="h4">pizzas medianas</p>
                             <p>Consulta esta y todas nuestras otras promociones en nuestro apartado de carta.</p>
                             <a href="#" class="btn btn-secondary">Ver carta</a>
@@ -137,7 +137,7 @@
                         <div class="carousel-caption">
 
                             <h2>jueves en pareja</h2>
-                            <img alt="menú 2x1" src="img/2x1.png">
+                            <img alt="menú 2x1" src="<?php bloginfo( 'template_url' ); ?>/img/2x1.png">
                             <p class="h4">especial perritos</p>
                             <p>Consulta esta y todas nuestras otras promociones en nuestro apartado de carta.</p>
                             <a href="#" class="btn btn-secondary">Ver carta</a>
@@ -188,13 +188,13 @@
 
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="img/gallery01.jpg" alt="Imagen 1" class="img-fluid">
+                            <img src="<?php bloginfo( 'template_url' ); ?>/img/gallery01.jpg" alt="Imagen 1" class="img-fluid">
                         </div>
                         <div class="col-sm-4">
-                            <img src="img/gallery02.jpg" alt="Imagen 2" class="img-fluid">
+                            <img src="<?php bloginfo( 'template_url' ); ?>/img/gallery02.jpg" alt="Imagen 2" class="img-fluid">
                         </div>
                         <div class="col-sm-4">
-                            <img src="img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                            <img src="<?php bloginfo( 'template_url' ); ?>/img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
                         </div>
                     </div>
 
@@ -278,21 +278,17 @@
 
         </footer>
 
-
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="js/general.js" type="text/javascript"></script>
+    <script src="<?php bloginfo( 'template_url' ); ?>/js/general.js" type="text/javascript"></script>
 </body>
 
 </html>

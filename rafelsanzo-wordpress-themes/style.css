@@ -49,6 +49,7 @@ header {
   margin-right: 40px;
 }
 
+/* Content */
 #main > .container {
   box-shadow: 0 7px 18px rgba(0, 0, 0, 0.5);
 }
@@ -112,6 +113,22 @@ p {
   font-size: 16px;
 }
 
+/* Footer */
+footer {
+  background-color: #f6b92a;
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+footer ul {
+  margin-bottom: 0;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Footer sidebars */
 .sidebars-zone {
   background-color: #e0e0e0;
@@ -133,6 +150,7 @@ p {
   color: #000;
 }
 
+/* Helpers */
 .mar-top-80 {
   margin-top: 80px;
 }

@@ -18,6 +18,8 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css">
+
+    <?php wp_head(); ?>
 </head>
 
 <body>
@@ -289,6 +291,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
     <script src="<?php bloginfo( 'template_url' ); ?>/js/general.js" type="text/javascript"></script>
+
+    <?php wp_footer(); ?>
 </body>
 
 </html>

@@ -2,3 +2,15 @@ header {
   background-color: #2a1000;
   padding-top: 25px;
 }
+
+.social-header {
+  margin-top: 12px;
+}
+
+.social-header a {
+  color: #fff;
+}
+
+.social-header a .fa-inverse {
+  color: #2a1000;
+}

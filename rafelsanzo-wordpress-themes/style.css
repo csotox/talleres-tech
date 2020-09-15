@@ -43,3 +43,52 @@ header {
 .menu-list > li:not(:last-child) {
   margin-right: 40px;
 }
+
+#main > .container {
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Carousel */
+#slider-home {
+  margin-bottom: 50px;
+}
+
+.carousel-caption {
+  background-color: rgba(41, 23, 1, 0.75);
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 30px 45px;
+  text-align: left;
+  width: 340px;
+}
+
+.carousel-caption p {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.carousel-caption h2 {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.carousel-caption .h4 {
+  font-size: 20px;
+  margin-bottom: 30px;
+  margin-top: 8px;
+}
+
+.carousel-caption img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.carousel-caption a {
+  border-radius: 0;
+  font-weight: bold;
+  color: #291701;
+  border: none;
+}

@@ -14,3 +14,26 @@ header {
 .social-header a .fa-inverse {
   color: #2a1000;
 }
+
+.menu-bar {
+  background-color: #ffbc01;
+  margin-top: 20px;
+}
+.menu-bar a {
+  color: #2a1000;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.menu-bar a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu-list {
+  padding: 12px 0;
+  margin-bottom: 0;
+}
+.menu-list > li:not(:last-child) {
+  margin-right: 40px;
+}
